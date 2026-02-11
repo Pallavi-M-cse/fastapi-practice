@@ -1,11 +1,13 @@
+
 from fastapi import APIRouter
+from app.schemas import UserCreate
 
-router = APIRouter()
+router=APIRouter()
 
-@router.get("/ping")
-def ping(name:str ="guest"):
-    print(f"Ping hit by:{name}")
-    return {
-        "status":"ok",
-        "user":name
-    } 
+@router.post("/users")
+def create_user(user:UserCreate):
+    return{
+        "message":"User created",
+        "user":user
+    }
+
