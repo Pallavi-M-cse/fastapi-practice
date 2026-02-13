@@ -1,7 +1,7 @@
 
 from fastapi import APIRouter
-from app.schemas import UserCreate
-from app.services import add_user,get_all_users
+from schemas import UserCreate
+from services import add_user,get_all_users
 
 router=APIRouter()
 
