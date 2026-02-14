@@ -1,8 +1,12 @@
-from database import fake_users_db
+from sqlalchemy.orm import Session
+from models import User
 
-def add_user(user_data:dict):
-    fake_users_db.append(user_data)
-    return user_data
+def add_user(db: Session, user_data: dict):
+    new_user = User(**user_data)
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    return new_user
 
-def get_all_users():
-    return fake_users_db
+def get_all_users(db: Session):
+    return db.query(User).all()
