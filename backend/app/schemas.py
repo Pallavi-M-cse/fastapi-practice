@@ -12,4 +12,9 @@ class UserResponse(BaseModel):
     age: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+class UserUpdate(BaseModel):
+    name: str
+    email: str
+    age: int
